@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.culysoft</groupId>
-	<artifactId>aulaonline-api</artifactId>
+	<artifactId>star-war-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>star-war-api</name>
 	<description>Challenge Back-End - https://github.com/AmeDigital/challenge-back-end-hit</description>
