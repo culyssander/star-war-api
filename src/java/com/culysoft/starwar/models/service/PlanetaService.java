@@ -41,6 +41,8 @@ public class PlanetaService {
 	@Autowired
 	private RestTemplate restTemplate;
 	
+	private String urlApiRequest;
+	
 	private String urlPlaneta;
 	
 	public List<Planeta> findAll() {
@@ -67,9 +69,9 @@ public class PlanetaService {
 	}
 	
 	private Planeta getPlanetaComLink(Planeta planeta) {
-		planeta.add(new Link("http://localhost:8080/planetas/"));
-		planeta.add(new Link("http://localhost:8080/planetas/" + planeta.getId()));
-		planeta.add(new Link("http://localhost:8080/planetas/nome/" + planeta.getNome()));
+		planeta.add(new Link(urlPlaneta));
+		planeta.add(new Link(urlPlaneta + planeta.getId()));
+		planeta.add(new Link(urlPlaneta + "nome/" + planeta.getNome()));
 		return planeta;
 	}
 	
@@ -108,7 +110,7 @@ public class PlanetaService {
 			factory.setHttpClient(httpClient);
 			restTemplate.setRequestFactory(factory);
 			
-			ResponseEntity<ApiRequest> results = restTemplate.getForEntity(urlPlaneta, ApiRequest.class);
+			ResponseEntity<ApiRequest> results = restTemplate.getForEntity(urlApiRequest, ApiRequest.class);
 			
 			if(results.hasBody()) {
 				for(Result result : results.getBody().getResults()) {
